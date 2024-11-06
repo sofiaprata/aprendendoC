@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+#define TAM 3
+#define INI 0
+#define MX 100
+
+void calculardistancia(){
+    //ENTRADA DE DADOS
+    int x[TAM], y[TAM], d[TAM];
+
+    srand(time(NULL)); // configura a semente para a funçao rand
+
+    //puts("Entre com o primeiro valor : ");
+    for(int k=0; k<TAM; k++){
+        //scanf("%d", &x[k]);
+        x[k] = rand() % MX; //rand é uma maquina que dá o maior valor possivel, dá o valor de uma faixa 0 a um valor muito alto
+    }
+
+    //puts("Entre com o segundo valor: ");
+    for(int k=0; k<TAM; k++){
+        //scanf("%d", &y[k]);
+    }
+
+    //PROCESSAMENTO
+
+    for (int k=0; k<TAM; k++){
+        d[k] = abs(x[k] - y[k]);
+    }
+
+    int menorDIstancia = d[0];
+    for(int k = 1; k<TAM; k++){
+        menorDIstancia = (menorDIstancia > d[k])?d[k]:menorDIstancia;
+    }
+    //SAIDA
+    puts("Distancias: ");
+    for (int k = 0; k<TAM; k++){
+        printf("%d e %d = %d\n", x[k], y[k], d[k]);
+    }
+
+    puts("====");
+    printf("A menor distancia entre os pontos é: %d\n", menorDIstancia);
+}
+
+int main(){
+    calculardistancia();
+    return 0;
+}
