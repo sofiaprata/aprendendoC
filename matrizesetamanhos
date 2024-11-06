@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#define TAM 3
+
+void calculardistancia(){
+    //ENTRADA DE DADOS
+    int x[TAM], y[TAM], d[TAM];
+
+    puts("Entre com o primeiro valor : ");
+    for(int k=0; k<TAM; k++){
+        scanf("%d", &x[k]);
+    }
+
+    puts("Entre com o segundo valor: ");
+    for(int k=0; k<TAM; k++){
+        scanf("%d", &y[k]);
+    }
+
+    //PROCESSAMENTO
+
+    for (int k=0; k<TAM; k++){
+        d[k] = abs(x[k] - y[k]);
+    }
+
+    int menorDIstancia = d[0];
+    for(int k = 1; k<TAM; k++){
+        menorDIstancia = (menorDIstancia > d[k])?d[k]:menorDIstancia;
+    }
+    //SAIDA
+    puts("Distancias: ");
+    for (int k = 0; k<TAM; k++){
+        printf("%d e %d = %d\n", x[k], y[k], d[k]);
+    }
+
+    puts("====");
+    printf("A menor distancia entre os pontos é: %d\n", menorDIstancia);
+}
+
+int main(){
+    calculardistancia();
+    return 0;
+}
