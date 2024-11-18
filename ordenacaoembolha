@@ -1,0 +1,50 @@
+//Crie um código que ordene um vetor de inteiros de forma crescente com ordenação em bolha.
+#include <stdio.h>
+#define TAM 10
+
+void ordenarembolha(int vetor[]){
+    int i, j, temp;
+    for (i = 0; i < TAM - 1; i++) {
+      
+      //flag
+        int trocou = 0;
+
+        for (j = 0; j < TAM - 1 - i; j++) {
+            if (vetor[j] > vetor[j + 1]) {
+                // Troca os elementos de lugar
+                temp = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = temp;
+                trocou = 1;
+            }
+        }
+
+        // Se não houve troca (trocou == 0)
+        if (!trocou) {
+            break;
+        }
+    }
+}
+
+void imprimirVetor(int vetor[]){
+    for (int i = 0; i < TAM; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int vetor[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(vetor) / sizeof(vetor[0]);
+
+    printf("Vetor antes da ordenação: \n");
+    imprimirVetor(vetor);
+
+    // Ordena o vetor utilizando a ordenação em bolha
+    ordenarembolha(vetor);
+
+    printf("Vetor após a ordenação: \n");
+    imprimirVetor(vetor);
+
+    return 0;
+}
