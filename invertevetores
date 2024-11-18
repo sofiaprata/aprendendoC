@@ -1,0 +1,27 @@
+//crie um codigo que inverta vetores
+#include <stdio.h>
+
+#define TAM 10
+
+void invertevetor(){
+  int k,aux;
+  int x[TAM];
+  
+  for(k = 0; k < TAM/2; k++){
+    aux = x[TAM-1-k];
+    x[TAM-k] = x[k];
+    x[k] = aux;
+  }
+
+  //saída
+  puts("Vetor invertido: ");
+  for (int k=0; k<TAM; k++){
+    printf("%d", x[k]);
+  }
+    
+}
+
+int main(){
+  invertevetor();
+  return 0;
+}
