@@ -6,6 +6,11 @@
 void invertevetor(){
   int k,aux;
   int x[TAM];
+
+  for (k = 0; k < TAM; k++) {
+      x[k] = k + 1;  
+  }
+  
   
   for(k = 0; k < TAM/2; k++){
     aux = x[TAM-1-k];
