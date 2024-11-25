@@ -1,0 +1,41 @@
+//gerar uma matriz aleatoria, pede ao usuario numeros aleatorios e imprima quantas vezes ele aparece
+#include <stdio.h>
+#include <time.h>
+
+#define MX 100
+#define INI 0
+#define QL 4
+#define QC 2
+
+void gerarmatriz(){
+    int matriz [QL][QC];
+    int num,i,j,cont = 0;
+
+    srand(time(NULL));
+
+//ENQUANTO FOR MENOR QUE A QUANTIDADE DE LINHAS E COLUNAS ELE VAI REINICIALIZAR
+printf("MATRIZ GERADA ALEATORIAMENTE: \n");
+    for (int i=0;i<QL;i++){
+        for (int j=0;j<QC;j++){
+            matriz[i][j] = rand() % MX;
+                printf("%4d", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Digite um número para verificar se ele aparece na matriz: \n");
+    scanf("%d", &num);
+
+    for(int i=0;i<QL;i++){
+        for(int j=0; j<QC;j++){
+            if (matriz[i][j] == num){
+                cont ++;
+            }
+        }
+    }
+    printf("O número %d apareceu %d vezes na matriz.", num, cont);
+}
+
+int main(){
+    gerarmatriz();
+    return 0;
+}
