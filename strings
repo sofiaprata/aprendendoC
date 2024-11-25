@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+#define TAM 80
+
+void criarstring() {
+    char str1[TAM], str2[TAM];
+
+    puts("Digite uma frase: ");
+    fgets(str1, TAM, stdin);  // Lê a primeira frase
+    puts("Digite outra frase: ");
+    fgets(str2, TAM, stdin);  // Lê a segunda frase
+
+    // Remove a nova linha '\n' de ambas as strings, se presente
+    str1[strcspn(str1, "\n")] = '\0';  
+    str2[strcspn(str2, "\n")] = '\0';
+
+    printf("Primeira frase: %s\n", str1);
+    printf("Segunda frase: %s\n", str2);
+
+
+    // Concatenar str2 em str1
+    printf("Frase 1 + Frase 2: %s\n", strcat(str1, str2));
+
+    // Imprimir o tamanho das strings
+    printf("Tamanho frase 1: %zu\n", strlen(str1));  // %zu para tamanho
+    printf("Tamanho frase 2: %zu\n", strlen(str2));  // %zu para tamanho
+
+    // Comparação das strings
+    int resultado = strcmp(str1, str2);
+    if (resultado == 0) {
+        printf("As frases são iguais.\n");
+    } else if (resultado < 0) {
+        printf("Frase 1 é menor que a frase 2.\n");
+    } else {
+        printf("Frase 1 é maior que a frase 2.\n");
+    }
+
+    printf("Frase 1 trocada pela 2: %s\n", strcpy(str1, str2));
+}
+
+int main() {
+    criarstring();
+    return 0;
+}
