@@ -1,0 +1,66 @@
+//Dado um vetor de inteiros de tamanho N, use ponteiros para referenciar o menor e o maior elemento
+
+#include <stdlib.h>
+#include <stdio.h>
+
+#define MX 100
+
+//void preencher(int *pv, int q){
+//void imprimir(int *pv, int q){
+
+int main(){
+    int n;
+    int *p = NULL;
+
+    puts("Digite a quantidade de elementos: \n");
+    scanf("%d", &n);
+
+    p = (int*) malloc(n * sizeof(int));  //malloc aloca dinamicamente a memoria
+
+    if (!p){
+        puts("Memória insuficiente!");
+        exit(1);
+    }
+
+    int c;
+    somar(10,2,&c);
+    printf("%");
+
+    srand(time(NULL));
+    preencher(p,n);
+    imprimir(p,n);
+
+    int *pMenor = NULL, *pMaior = NULL;
+
+    pMenor = p;
+    pMaior = p;
+
+    for(int k = 1; k<n; k++){
+        pMenor = (*pMenor > *(p+k))?p+k: pMenor; //Se ponteiro menor maior que o ponteiro seguinte, entao p + k recebe o ponteiro menor
+        pMaior = (*pMaior < *(p+k))?p+k: pMaior; // Se o ponteiro maior é menor que o ponteiro seguinte, então p+ k recebe o ponteiro maior
+    }
+
+        printf("Endereço do menor : %p\n", pMenor);
+        printf("Endereço do maior : %p\n", pMaior);
+
+    free(p);
+
+    return 0;
+}
+
+
+void preencher(int *pv, int q){
+    
+    //Deslocamento de ponteiro
+    for(int k = 0; k<q; k++){
+        *(pv+k) = rand() % MX;  // vai deslocando para o proximo endereço
+        // ou pv[k] = rand() % MX;
+    }
+
+}
+
+void imprimir(int *pv, int q){
+    for (int k = 0;k<q; k++){
+        printf("[%p] %d\n", pv+k, *(pv + k));
+    }
+}
