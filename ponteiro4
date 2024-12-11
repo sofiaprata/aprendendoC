@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 #define MX 100
 
@@ -21,10 +22,6 @@ int main(){
         puts("Memória insuficiente!");
         exit(1);
     }
-
-    int c;
-    somar(10,2,&c);
-    printf("%");
 
     srand(time(NULL));
     preencher(p,n);
