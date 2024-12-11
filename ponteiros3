@@ -1,0 +1,39 @@
+//Dado um vetor de inteiros de tamanho N, use ponteiros para referenciar o menor e maior elemento
+#include <stdio.h>
+
+void imprimirmenoremaior(){
+    int numero;
+
+    //Recebe o tamanho do vetor
+    printf("Digite o tamanho do vetor: \n");
+    scanf("%d", &numero);
+
+    int vetor[numero];
+
+    //Recebe os elementos do vetor
+    printf("Digite os elementos do vetor: \n");
+    for(int i = 0; i <numero; i++){
+        scanf("%d", &vetor[i]);
+    }
+
+    //Direciona os ponteiros para o menor e maior elemento
+    int *min_ptr = &vetor[0], *max_ptr = &vetor[0];
+
+    //Percorre o vetor
+    for(int i = 1; i<numero; i++){
+        if(vetor[i]< *min_ptr){
+            min_ptr = &vetor[i];
+        }
+        if(vetor[i]> *max_ptr) {
+            max_ptr = &vetor[i];
+        }
+    }
+
+    printf("Menor elemento: %d\n", *min_ptr);
+    printf("Maior elemento: %d\n", *max_ptr);
+}
+
+int main(){
+    imprimirmenoremaior();
+    return 0;
+}
