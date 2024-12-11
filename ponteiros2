@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
+
+#define MX 100
+
+void somarvetoresdeponteiros(){
+    unsigned char *pv = NULL;  //Null para evitar que o ponteiro vá para um local desconhecido
+    int *pz = NULL;
+    unsigned n;
+
+    //Tamanho do vetor
+    puts("Entre com o tamanho do vetor: ");
+    scanf("%u", &n);
+
+    srand(time(NULL));
+
+    //Alocar memória dinamicamente
+    pv = malloc(n * sizeof (unsigned char));
+    if(!pv){
+        puts("Não há memória suficiente.");
+        exit(1);
+    }
+
+    pz = malloc(n * sizeof (unsigned char));
+    if(!pz){
+        puts("Não há memória suficiente.");
+        exit(1);
+    }
+
+    for (int k = 0; k<n; k++){
+        *(pv+k) = rand() % MX;
+        *(pz+k) = rand() % MX;
+    }
+
+    puts("Vetor - unsigned char");
+    for(int k = 0; k<n; k++){
+        printf("[%p] %hhu\n", pv+k,*(pv+k));
+    }
+
+    puts("Vetor - int");
+    for(int k = 0; k<n; k++){
+        printf("[%p] %hhu\n", pz+k,*(pz+k));
+    }
+
+}
