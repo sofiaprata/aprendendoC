@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(int argc, char *argv[]){
+    int soma;
+    
+
+    if(argc!= 3){
+        printf("Use: \n\t %s <valor1> <valor2>\n", argv[0]);
+        exit(1);
+    }
+
+    int a = atoi(argv[1]);
+    int b = atoi(argv[2]);
+
+    soma = a+b;
+
+    printf("A soma de a e b será: %d + %d = %d.", a,b,soma);
+
+    return 0;
+}
+
+//no terminal: primeiro -> gcc -o nomedoarquivo.e nomedoarquivo.c  
+//segundo -> ./nomedoarquivo.e
