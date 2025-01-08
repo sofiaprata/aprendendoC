@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define MX 10
+
+//  ./program.e <largura> <altura>
+
+int **alocarMemoriaMatriz(int, int);
+void popularMatriz(int **, int, int);
+void imprimirMatriz(int **pm, const int, const int);
+void multiplicarmatrizes(int **matriz1, int **matriz2, int **matrizresultado, int largura, int altura);
+
+int main(int argc, char **argv){
+
+    if (argc!=3){
+        printf("Use:\n\t\t %s <largura> <altura>\n\n",argv[0]);
+        exit(1);
+    }
+
+    int largura = atoi(*(argv+1)); 
+    int altura = atoi(*(argv+2));
+
+// Aloca memória para as duas matrizes
+    int **matriz1 = alocarMemoriaMatriz(largura, altura);
+    int **matriz2 = alocarMemoriaMatriz(largura,altura);
+    int **matrizresultado = alocarMemoriaMatriz(largura,altura);
+    
+    // Preenche as duas matrizes com números aleatórios
+    srand(time(NULL));
+    popularMatriz(matriz1, largura, altura);
+    popularMatriz(matriz2,largura,altura);
+    
+    puts("Primeira Matriz Gerada");
+    imprimirMatriz(matriz1, largura, altura);
+    puts("\nSegunda Matriz Gerada");
+    imprimirMatriz(matriz2, largura, altura);
+
+    multiplicarmatrizes(matriz1, matriz2, matrizresultado, largura, altura);
+
+    puts("Resultado:\n");
+    imprimirMatriz(matrizresultado, largura, altura);
+    
+    return 0;
+    
+}
+
+int **alocarMemoriaMatriz(int largura, int altura){
+    int **pm = NULL;
+
+    if (!(pm = (int **) malloc(altura * sizeof(int *)))){
+        puts("Memória indisponível");
+        exit(3);
+    }
+    for (int k=0; k<altura; k++){
+        pm[k] = (int *) malloc(largura * sizeof(int));
+    }
+
+    return pm;
+} 
+
+void popularMatriz(int **pm, int largura, int altura) {
+    for (int k=0; k<altura; k++){
+        for (int j=0; j<largura; j++){
+            *(*(pm+k) + j) = rand() % MX;
+        }
+    }
+}
+
+void imprimirMatriz(int **pm, const int largura, const int altura){
+    for (int k=0; k<altura; k++){
+        for (int j=0; j<largura; j++){
+            printf("%4d",*(*(pm+k) + j));
+        }
+        printf("\n");
+    }
+}
+
+void multiplicarmatrizes (int **matriz1, int **matriz2, int **matrizresultado, int largura, int altura){
+    for (int k = 0; k <altura; k++){
+        for (int j = 0; j< largura; j++){
+            *(*(matrizresultado + k)+ j) = *(*(matriz1 + k)+ j) * *(*(matriz2 + k)+ j);
+        }
+    }
+}
