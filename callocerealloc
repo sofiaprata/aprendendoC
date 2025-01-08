@@ -1,0 +1,8 @@
+//no calloc ele seleciona o argumento que vai ser calculado o sizeof ao inves de multiplicar como no malloc
+// calloc(n,sizeof(int))
+//no calloc ele limpa o endereço (vem zerado) em que vai ser alocada a memoria, e no malloc pode vir um local com lixo.
+
+//quando o espaço não é suficiente e precisa mudar de endereço em tempo de execução
+// realloc(NULL, sizeof(int))
+// realloc(px, novo_n * sizeof(int))
+// muda o endereço automaticamente quando percebe que o espaço no endereço é insuficiente para o novo valor.
